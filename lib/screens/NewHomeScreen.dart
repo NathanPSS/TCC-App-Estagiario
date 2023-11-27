@@ -38,9 +38,6 @@ class _NewHomeScreenState extends ConsumerState<NewHomeScreen> {
   Widget build(BuildContext context) {
    // ref.watch(snackBarsController.notifier).consume(context);
     return Scaffold(
-      appBar: AppBar(
-        title: Text('DashBoard'),
-      ),
       onDrawerChanged: (value) => print(value),
       drawer: Drawer(
           child: FutureBuilder(
@@ -87,7 +84,6 @@ class _NewHomeScreenState extends ConsumerState<NewHomeScreen> {
             },
           ),
       ),
-      body:  PanelServices()
-        );
+      body:   SafeArea(child: PanelServices()));
   }
 }

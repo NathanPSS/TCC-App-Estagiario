@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hujb/global/colors.dart';
 import 'package:hujb/global/dimensions_device.dart';
+import 'package:hujb/screens/Estagios.dart';
 import 'package:hujb/widgets/image_services.dart';
 import 'package:hujb/widgets/text_services.dart';
 
@@ -115,7 +116,11 @@ import 'package:hujb/widgets/text_services.dart';
 } */
 
 class BaseServiceButton extends StatelessWidget {
-  const BaseServiceButton({super.key});
+  const BaseServiceButton({super.key, required this.nameButton, required this.iconButton});
+
+  final String nameButton;
+
+  final IconData iconButton;
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +134,7 @@ class BaseServiceButton extends StatelessWidget {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(30)))),
         onPressed: () {
-
+           Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => EstagiosScreen()));
         },
         child: Row(
           children: [
@@ -138,7 +143,7 @@ class BaseServiceButton extends StatelessWidget {
                 child: Container(
                     alignment: Alignment.centerLeft,
                     child: Icon(
-                      Icons.assignment_ind_outlined,
+                      iconButton,
                       size: 40,
                       color: (Theme.of(context).brightness == Brightness.light) ? Colors.blue[800] : Colors.blueAccent,
                     ))),
@@ -150,7 +155,7 @@ class BaseServiceButton extends StatelessWidget {
                     child: FittedBox(
                       alignment: Alignment.centerLeft,
                       fit: BoxFit.contain,
-                      child: Text("Historico",
+                      child: Text(nameButton,
                           style: Theme.of(context)
                               .textTheme
                               .bodyMedium!

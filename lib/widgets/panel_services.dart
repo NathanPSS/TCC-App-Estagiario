@@ -35,13 +35,12 @@ class PanelServices extends StatelessWidget {
                MediaQuery.of(context).orientation == Orientation.portrait ?
               Column(
                   children: [
-                    BaseServiceButton(),
+                    BaseServiceButton(nameButton: "Meus Estagios",iconButton: Icons.assignment),
 
                   ]) :
           Row(
           children: [
-          BaseServiceButton(),
-
+          BaseServiceButton(nameButton: "Meus Estagios",iconButton: Icons.assignment),
         ]))
             ],
           ),

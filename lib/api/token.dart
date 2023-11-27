@@ -18,16 +18,18 @@ Future<void> setToken(String username,String password) async {
   );
   print(response.statusCode);
   if (response.statusCode == 200) {
-    await storage.write(key: "token", value: response.body);
+    await storage.write(key: "hujb_estagiario_jwt_token", value: response.body);
   } else {
     debugPrint('Failed to send data');
   }
 }
 
 Future<bool> hasValidToken() async {
-  var token = json.decode((await storage.read(key: "token"))!)['expireAt'];
-  if(token != null){
+  var existsToken = await storage.read(key: "hujb_estagiario_jwt_token");
+  if(existsToken != null){
+    var token = json.decode((existsToken))['expireAt'];
     if(isValidToken(token)){
+      debugPrint(token);
       return true;
     }
     return false;

@@ -6,6 +6,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 Future<void> openCheckIn(Map<String,dynamic> setor) async {
+  debugPrint(setor.toString());
   final url = Uri.parse(
        '${dotenv.env['API_BASE_URL']!}/estagiario/check-in');
 
@@ -14,7 +15,7 @@ Future<void> openCheckIn(Map<String,dynamic> setor) async {
     body: json.encode({'id': setor['id'],'nome': setor['nome']}),
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ${(json.decode((await storage.read(key: "token"))!)['token'])!}'
+      'Authorization': 'Bearer ${(json.decode((await storage.read(key: "hujb_estagiario_jwt_token"))!)['token'])!}'
     },
   );
   if (response.statusCode == 200) {
@@ -33,7 +34,7 @@ Future<String> getCheckInCurrentTime() async {
       headers: {
         'Content-Type': 'application/json',
         'Authorization':
-        'Bearer ${(json.decode((await storage.read(key: "token"))!)['token'])!}'
+        'Bearer ${(json.decode((await storage.read(key: "hujb_estagiario_jwt_token"))!)['token'])!}'
       },
     );
     if (response.statusCode == 200) {
@@ -56,7 +57,7 @@ Future<bool> isCheckInOpen() async {
       url,
       headers: {
         'Authorization':
-        'Bearer ${(json.decode((await storage.read(key: "token"))!)['token'])!}'
+        'Bearer ${(json.decode((await storage.read(key: "hujb_estagiario_jwt_token"))!)['token'])!}'
       },
     );
     if (response.statusCode == 200) {
@@ -75,7 +76,7 @@ Future<Map<String,dynamic>?> closeCheckIn() async {
     url,
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ${(json.decode((await storage.read(key: "token"))!)['token'])!}'
+      'Authorization': 'Bearer ${(json.decode((await storage.read(key: "hujb_estagiario_jwt_token"))!)['token'])!}'
     },
   );
   if (response.statusCode == 200) {
@@ -91,7 +92,7 @@ Future<void> createRegistry(String description) async {
     body: json.encode({'description': description}),
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ${(json.decode((await storage.read(key: "token"))!)['token'])!}'
+      'Authorization': 'Bearer ${(json.decode((await storage.read(key: "hujb_estagiario_jwt_token"))!)['token'])!}'
     },
   );
   if (response.statusCode == 200) {

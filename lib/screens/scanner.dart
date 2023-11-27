@@ -42,11 +42,6 @@ class _ScannerState extends State<Scanner> {
           Consumer(builder: (ctx,ref,child) {
             final screenSize = MediaQuery.of(ctx).size;
           return  MobileScanner(
-            scanWindow: Rect.fromCenter(
-                center: Offset(screenSize.width / 2, screenSize.height / 2),
-                width: (screenSize.width < 400 || screenSize.height < 400) ? 270.0 : 400.0,
-                height: (screenSize.width < 400 || screenSize.height < 400) ? 270.0 : 400.0,
-            ),
               controller: cameraController,
               onDetect: (capture) async {
                 if (!barcodeDetected) {

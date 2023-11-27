@@ -1,12 +1,11 @@
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hujb/api/lifecycle_check_in.dart';
 
 
 final isCheckInOpenControler = FutureProvider<bool>((ref) async {
    return isCheckInOpen().then((value) {
-    debugPrint(value.toString());
      return value;
    });
 });
