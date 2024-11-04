@@ -120,6 +120,9 @@ class _EstagiosScreenState extends State<EstagiosScreen> {
                return e;
              }));
            }
+           if(columChildreen.isEmpty){
+             return Center(child: Text('Sem Estágios'));
+           }
              return Center(
                  child: Registry(data: columChildreen)
              );

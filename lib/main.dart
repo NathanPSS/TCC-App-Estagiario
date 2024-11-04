@@ -35,7 +35,7 @@ Future<void> main() async {
           builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
               if(snapshot.connectionState == ConnectionState.done){
                 if(snapshot.data!){
-                  return  NewHomeScreen();
+                  return  LoginScreen();
                 }
                 return const LoginScreen();
               }

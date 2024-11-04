@@ -3,7 +3,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hujb/providers/registros.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../global/dimensions_device.dart';
 
@@ -95,7 +97,7 @@ class _RegistryDetailsState extends State<RegistryDetails> {
                                               context: context) *
                                               0.04)),
                                   Text(
-                                      "${widget.registries[widget.index]['hr_entrada']}"),
+                                      "${widget.registries[widget.index]['hrEntrada']}"),
                                 ],
                               ),
                               Icon(Icons.input_rounded,
@@ -123,14 +125,14 @@ class _RegistryDetailsState extends State<RegistryDetails> {
                                               context: context) *
                                               0.04)),
                                   Text(
-                                      "${widget.registries[widget.index]['hr_saida']}"),
+                                      "${widget.registries[widget.index]['hrSaida']}"),
                                 ],
                               ),
                               Icon(Icons.output_rounded,
                                   color: (Theme.of(context).brightness ==
                                       Brightness.light)
                                       ? Colors.red[800]
-                                      : Colors.redAccent,
+                                      : Colors.red[600],
                                   size: getAverageDeviceSize(context: context) *
                                       0.056)
                             ],
@@ -177,14 +179,14 @@ class _RegistryDetailsState extends State<RegistryDetails> {
                                           fontSize: getAverageDeviceSize(
                                               context: context) *
                                               0.04)),
-                                  Text("${widget.registries[widget.index]['date']}"),
+                                  Text("${widget.registries[widget.index]['data']}"),
                                 ],
                               ),
                               Icon(Icons.event,
                                   color: (Theme.of(context).brightness ==
                                       Brightness.light)
-                                      ? Colors.pink[800]
-                                      : Colors.pinkAccent[400],
+                                      ? Colors.blueGrey[800]
+                                      : Colors.blueGrey[400],
                                   size: getAverageDeviceSize(context: context) *
                                       0.056)
                             ],
@@ -207,33 +209,130 @@ class _RegistryDetailsState extends State<RegistryDetails> {
                                   Text("${widget.registries[widget.index]['status']}"),
                                 ],
                               ),
-                              Icon(Icons.event,
+                              Icon(FontAwesomeIcons.squarePollVertical,
                                   color: (Theme.of(context).brightness ==
                                       Brightness.light)
-                                      ? Colors.pink[800]
-                                      : Colors.pinkAccent[400],
+                                      ? Colors.orange[800]
+                                      : Colors.orange[400],
                                   size: getAverageDeviceSize(context: context) *
                                       0.056)
                             ],
                           ),
                           SizedBox(height: 24),
-
-                          SizedBox(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                          Visibility(
+                            visible:  widget.registries[widget.index]['motivo'] != null,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text("Descrição",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyLarge!
-                                        .copyWith(
-                                        fontSize: getAverageDeviceSize(
-                                            context: context) *
-                                            0.04)),
-                                Text("${widget.registries[widget.index]['descricao']}")
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("Motivo da Invalidade",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge!
+                                            .copyWith(
+                                            fontSize: getAverageDeviceSize(
+                                                context: context) *
+                                                0.04)),
+                                    Text("${widget.registries[widget.index]['motivo']}"),
+                                    SizedBox(height: 24,)
+                                  ],
+                                ),
+                                Icon(FontAwesomeIcons.x,
+                                    color: (Theme.of(context).brightness ==
+                                        Brightness.light)
+                                        ? Colors.red[800]
+                                        : Colors.red[400],
+                                    size: getAverageDeviceSize(context: context) *
+                                        0.056),
                               ],
                             ),
                           ),
+                           Visibility(
+                             visible:  widget.registries[widget.index]['preceptorNome'] != null,
+                             child: Row(
+                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                               children: [
+                                 Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text("Preceptor",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyLarge!
+                                              .copyWith(
+                                              fontSize: getAverageDeviceSize(
+                                                  context: context) *
+                                                  0.04)),
+                                      Text("${widget.registries[widget.index]['preceptorNome']}"),
+                                      SizedBox(height: 24,)
+                                    ],
+                                  ),
+                                 Icon(FontAwesomeIcons.userDoctor,
+                                     color: (Theme.of(context).brightness ==
+                                         Brightness.light)
+                                         ? Colors.blue[800]
+                                         : Colors.blue[400],
+                                     size: getAverageDeviceSize(context: context) *
+                                         0.056),
+                               ],
+                             ),
+                           ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("Setor",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyLarge!
+                                          .copyWith(
+                                          fontSize: getAverageDeviceSize(
+                                              context: context) *
+                                              0.04)),
+                                  Text("${widget.registries[widget.index]['setorNome']}"),
+                                ],
+                              ),
+                              Icon(MdiIcons.officeBuilding,
+                                  color: (Theme.of(context).brightness ==
+                                      Brightness.light)
+                                      ? Colors.grey[800]
+                                      : Colors.grey[400],
+                                  size: getAverageDeviceSize(context: context) *
+                                      0.056),
+                            ],
+                          ),
+                          SizedBox(height: 24,),
+                          Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text("Descrição",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyLarge!
+                                                .copyWith(
+                                                fontSize: getAverageDeviceSize(
+                                                    context: context) *
+                                                    0.04)),
+                                        Icon(MdiIcons.textBox,
+                                            color: (Theme.of(context).brightness ==
+                                                Brightness.light)
+                                                ? Colors.amber[800]
+                                                : Colors.amber[400],
+                                            size: getAverageDeviceSize(context: context) *
+                                                0.056),
+                                      ],
+                                    ),
+                                    Text("${widget.registries[widget.index]['descricao']}")
+                                  ],
+                                ),
+
                           SizedBox(
                             height: getDeviceHeight(context: context) * 0.04,
                           )

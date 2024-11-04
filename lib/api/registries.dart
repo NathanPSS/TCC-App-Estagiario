@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import '../config/storage.dart';
@@ -19,6 +20,7 @@ Future<Map<String,dynamic>?> getAllRegistries() async {
   );
   if (response.statusCode == 200) {
     try {
+      debugPrint(json.decode(response.body).toString());
       return json.decode(response.body);
     } catch (e) {
       print('Error decoding JSON: $e');

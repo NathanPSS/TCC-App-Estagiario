@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 
-Future<void> setToken(String username,String password) async {
+Future<bool> setToken(String username,String password) async {
   final url = Uri.parse(
     '${dotenv.env['API_BASE_URL']!}/estagiario/auth');
   final response = await http.post(
@@ -19,9 +19,9 @@ Future<void> setToken(String username,String password) async {
   print(response.statusCode);
   if (response.statusCode == 200) {
     await storage.write(key: "hujb_estagiario_jwt_token", value: response.body);
-  } else {
-    debugPrint('Failed to send data');
+    return true;
   }
+  return false;
 }
 
 Future<bool> hasValidToken() async {

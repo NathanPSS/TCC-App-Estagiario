@@ -1,16 +1,13 @@
-# hujb
+# HUJB - Aplicativo dos Estagiários
 
-A new Flutter project.
+O **HUJB** é um aplicativo com a interface (frontend) que permite aos estagiários gerenciarem o ciclo de vida de seus registros contando com as funcionalidades de:
 
-## Getting Started
+- Criar novos registros
+- Consulta de seus registros
 
-This project is a starting point for a Flutter application.
+## Configuração
 
-A few resources to get you started if this is your first Flutter project:
+- Crie um arquivo .env na raiz do projeto com a propriedade `API_BASE_URL`
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Preencha essa propriedade com a **URL** do qual o backend irá receber as requisições do aplicativo
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
